@@ -31,7 +31,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -47,7 +47,6 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  Engine.update(engine)
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
   keyPressed();
@@ -57,7 +56,7 @@ function draw() {
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-   
+	Matter.Body.setStatic(packageBody,false)
   }
 }
 
